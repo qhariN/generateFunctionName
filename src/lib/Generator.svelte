@@ -2,18 +2,23 @@
   import { generateFunctionName } from "../services/ia";
 
   let function_goal = ''
+  let function_name = ''
 
   const generate = () => {
     generateFunctionName(function_goal).then((response) => {
-      console.log(response)
+      function_name = response
     })
   }
 </script>
 
-<div class="flex flex-col">
-  <textarea bind:value={function_goal} class="border" name="function goal" rows="5" placeholder="Write your function goal"></textarea>
-  <button on:click={generate} class="relative overflow-hidden rounded-lg bg-black px-20 py-6 ring-red-500/50 ring-offset-black will-change-transform focus:outline-none focus:ring-1 focus:ring-offset-2">
-    <span class="absolute inset-px z-10 grid place-items-center rounded-lg bg-black bg-gradient-to-t from-neutral-800 text-neutral-400">Generar nombre</span>
-    <span aria-hidden class="absolute inset-0 z-0 scale-x-[2.0] blur before:absolute before:inset-0 before:top-1/2 before:aspect-square before:animate-disco before:bg-[conic-gradient(var(--tw-gradient-stops))] before:from-purple-700 before:via-red-500 before:to-amber-400" />
+<div class="flex flex-col gap-4">
+  <textarea bind:value={function_goal} class="rounded-2xl bg-white/5 resize-none px-5 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500/30" rows="4" placeholder="My function goal is ..." />
+  <button on:click={generate} class="rounded-2xl bg-black/30 px-20 py-3 hover:bg-black/40 transition-all duration-200">
+    Generate
   </button>
+  {#if function_name}
+    <div class="rounded-2xl bg-white/5 px-5 py-3">
+      <p class="text-lg font-bold text-neutral-400">{function_name}</p>
+    </div>
+  {/if}
 </div>

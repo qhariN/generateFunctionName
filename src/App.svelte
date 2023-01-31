@@ -1,45 +1,33 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
   import Generator from './lib/Generator.svelte'
 </script>
 
-<div class="w-96 h-52 bg-fuchsia-500/10 blur-3xl absolute bottom-[50%] right-[50%]"></div>
-<div class="w-96 h-52 bg-purple-500/10 blur-3xl absolute top-[50%] left-[50%]"></div>
-<div class="w-52 h-80 bg-pink-500/10 blur-3xl absolute top-[35%] right-[45%]"></div>
+<div class="w-96 h-52 bg-indigo-500/10 blur-3xl absolute bottom-[50%] right-[50%] -z-10"></div>
+<div class="w-96 h-52 bg-purple-500/10 blur-3xl absolute top-[50%] left-[50%] -z-10"></div>
+<div class="w-52 h-80 bg-violet-500/10 blur-3xl absolute top-[35%] right-[45%] -z-10"></div>
 <main class="flex flex-col items-center min-h-screen justify-center">
-
-  <div>
-    <div class="relative space-y-5 overflow-hidden rounded-2xl bg-white/5 p-4 shadow-xl shadow-black/5">
-      <div class="h-36 rounded-lg bg-white/5 flex items-center">
-        <div class="flex items-center">
-          <div>
-            <span class="left-bracket">&#123;</span>
-          </div>
-          <div class="flex gap-3">
-            <div class="eye"></div>
-            <div class="eye invisible"></div>
-            <div class="eye"></div>
-          </div>
-          <div>
-            <span class="left-bracket">&#125;</span>
-          </div>
-        </div>
-      </div>
-      <Generator />
-    </div>
+  <div class="flex gap-2">
+    <h1>generateFunctionName</h1>
+    <span class="suffix">();</span>
+  </div>
+  <p class="description text-center">
+    Generate a function name based on your function goal with
+    <a href="https://cohere.ai/" target="_blank" rel="noreferrer" class="font-semibold italic underline decoration-wavy decoration-purple-500/90 hover:text-white transition-all duration-200">co:here AI</a>
+  </p>
+  <div class="rounded-3xl bg-white/5 p-5 shadow-xl shadow-black/5 mt-12 w-96">
+    <Generator />
   </div>
 </main>
 
 <style lang="postcss">
-  .left-bracket {
-    @apply font-semibold text-transparent text-9xl bg-clip-text bg-gradient-to-b from-rose-400 via-fuchsia-500 to-indigo-500;
-    @apply !leading-[.3];
-    text-shadow: #fb7185 0 0 10px;
+  h1 {
+    @apply text-5xl font-bold text-transparent animate-text bg-clip-text opacity-90;
+    @apply bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 h-16;
   }
-  .eye {
-    @apply bg-white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+  .suffix {
+    @apply text-5xl font-bold opacity-80 tracking-widest;
+  }
+  .description {
+    @apply text-2xl font-medium text-stone-300 opacity-80;
   }
 </style>
