@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        text: 'text 20s ease infinite',
+        text: 'text 15s ease infinite',
       },
       keyframes: {
         text: {

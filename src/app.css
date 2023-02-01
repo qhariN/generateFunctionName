@@ -4,6 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-stone-900 text-gray-100;
+    @apply text-gray-100;
+    background-color: #1c1917;
+    opacity: 1;
+    background: radial-gradient(circle, transparent 20%, #1c1917 20%, #1c1917 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #1c1917 20%, #1c1917 80%, transparent 80%, transparent) 22.5px 22.5px, linear-gradient(#211f22 1.8px, transparent 1.8px) 0 -0.9px, linear-gradient(90deg, #211f22 1.8px, #1c1917 1.8px) -0.9px 0;
+    background-size: 45px 45px, 45px 45px, 22.5px 22.5px, 22.5px 22.5px;
   }
 }
