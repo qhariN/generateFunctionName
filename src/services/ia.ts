@@ -6,23 +6,35 @@ export async function generateFunctionName(function_goal: string) {
     model: 'xlarge',
     prompt: `This is a name function generator.
 --
-Function goal: "generate a random number for lottery"
+Function goal: "Generate a random number for lottery"
 Function name: "generateRandomNumber"
 --
-Function goal: "create an array of fruits"
+Function goal: "Create an array of fruits"
 Function name: "createFruitArray"
 --
-Function goal: "get the weather for today"
+Function goal: "Get the weather for today"
 Function name: "getTodaysWeather"
 --
-Function goal: "get the traffic for a specific route"
+Function goal: "Get the traffic for a specific route"
 Function name: "getRouteTraffic"
 --
-Function goal: "register and login an user"
+Function goal: "Register and login an user"
 Function name: "registerAndLoginUser"
 --
-Function goal: "calculate the average of a set of numbers"
+Function goal: "Calculate the average of a set of numbers"
 Function name: "calculateAverage"
+--
+Function goal: "Find the shortest path between two points in a graph"
+Function name: "findShortestPath"
+--
+Function goal: "Predict the price of a stock based on historical prices and financial news"
+Function name: "predictStockPrice"
+--
+Function goal: "Classify images into different categories (e.g. cats, dogs, horses, etc.)"
+Function name: "classifyImage"
+--
+Function goal: "Detect and correct grammatical errors in a given text"
+Function name: "correctGrammaticalErrors"
 --
 Function goal: "${function_goal}"
 Function name:`,
