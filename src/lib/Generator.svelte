@@ -1,11 +1,14 @@
 <script lang="ts">
+  import checkSvg from '../assets/check.svg'
   import copySvg from '../assets/copy.svg'
+  import { fade } from 'svelte/transition'
   import { generateFunctionName } from '../services/ia'
 
   export let function_name: string
 
   let function_goal = ''
   let loading = false
+  let copied = false
 
   const eg = 'Translate a given text from one language to another'
 
@@ -18,7 +21,11 @@
   }
 
   const copyToClipboard = () => {
+    copied = true
     navigator.clipboard.writeText(function_name)
+    setTimeout(() => {
+      copied = false
+    }, 1000)
   }
 </script>
 
@@ -36,8 +43,12 @@
         Generate
       {/if}
     </button>
-    <button on:click={copyToClipboard} class="!px-4">
-      <img src={copySvg} class="opacity-80" width="22" height="22" alt="copy" title="Copy to clipboard">
+    <button on:click={copyToClipboard} class="min-w-[50px] !px-0" title="Copy to clipboard">
+      {#if copied}
+        <img src={checkSvg} class="opacity-80" width="24" height="24" alt="copy" in:fade={{ duration: 100, delay: 100 }}>
+      {:else}
+        <img src={copySvg} class="opacity-80" width="20" height="20" alt="check" in:fade={{ duration: 100, delay: 100 }}>
+      {/if}
     </button>
   </div>
 </div>
