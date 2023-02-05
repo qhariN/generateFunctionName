@@ -11,26 +11,47 @@
   let copied = false
 
   const eg = 'Translate a given text from one language to another'
+  
+  const unnecessaryWords = [
+    'my function',
+    'my function goal',
+    'my function goal is',
+    'my function goal is to'
+  ]
+
+  const removeUnnecessaryWords = (text: string) => {
+    unnecessaryWords.forEach((word) => {
+      text = text.toLowerCase().replace(word, '')
+    })
+    return text
+  }
 
   const generate = () => {
     loading = true
-    generateFunctionName(function_goal || eg).then((response) => {
+    const goal = removeUnnecessaryWords(function_goal)
+    generateFunctionName(goal || eg).then((response) => {
       function_name = response
+      loading = false
+    }).catch(() => {
+      alert('Something went wrong. Please try again.')
       loading = false
     })
   }
 
+  let copiedTimer: NodeJS.Timeout
+  
   const copyToClipboard = () => {
+    clearTimeout(copiedTimer)
     copied = true
     navigator.clipboard.writeText(function_name)
-    setTimeout(() => {
+    copiedTimer = setTimeout(() => {
       copied = false
     }, 1000)
   }
 </script>
 
 <div class="flex flex-col gap-4">
-  <textarea bind:value={function_goal} rows="4" placeholder="My function goal is ... (e.g. {eg})" />
+  <textarea bind:value={function_goal} rows="4" placeholder="Insert your function goal here (e.g. {eg})" class="text-sm"></textarea>
   <div class="flex gap-2">
     <button on:click={generate} class="w-full" class:pointer-events-none={loading}>
       {#if loading}
@@ -59,7 +80,7 @@
     @apply transition-colors duration-200;
   }
   textarea::placeholder {
-    @apply text-white/30;
+    @apply text-white/30 text-base;
   }
   textarea {
     @apply py-3;

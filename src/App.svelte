@@ -44,7 +44,7 @@
     @apply font-medium text-center text-2xl text-stone-300 opacity-80 max-w-lg;
   }
   .card {
-    @apply rounded-3xl bg-white/5 p-5 shadow-xl shadow-black/5 mt-12 w-96;
+    @apply rounded-3xl bg-white/5 p-5 shadow-xl shadow-black/5 mt-12 w-80;
   }
   .link-cohere {
     @apply font-semibold italic underline decoration-wavy decoration-purple-500/90 hover:text-white transition-colors duration-200;
