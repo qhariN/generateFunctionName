@@ -12,7 +12,7 @@
 
   const eg = 'Translate a given text from one language to another'
   
-  const unnecessaryWords = [
+  const unnecessary_words = [
     'my function',
     'my function goal',
     'my function goal is',
@@ -20,7 +20,7 @@
   ]
 
   const removeUnnecessaryWords = (text: string) => {
-    unnecessaryWords.forEach((word) => {
+    unnecessary_words.forEach((word) => {
       text = text.toLowerCase().replace(word, '')
     })
     return text
@@ -28,8 +28,8 @@
 
   const generate = () => {
     loading = true
-    const goal = removeUnnecessaryWords(function_goal)
-    generateFunctionName(goal || eg).then((response) => {
+    const clean_goal = removeUnnecessaryWords(function_goal)
+    generateFunctionName(clean_goal || eg).then((response) => {
       function_name = response
       loading = false
     }).catch(() => {
@@ -51,9 +51,9 @@
 </script>
 
 <div class="flex flex-col gap-4">
-  <textarea bind:value={function_goal} rows="4" placeholder="Insert your function goal here (e.g. {eg})" class="text-sm"></textarea>
+  <textarea bind:value={function_goal} rows="3" placeholder="Insert your function goal here (e.g. {eg})"></textarea>
   <div class="flex gap-2">
-    <button on:click={generate} class="w-full" class:pointer-events-none={loading}>
+    <button on:click={generate} class="w-full" disabled={loading}>
       {#if loading}
         <span class="inline-flex items-center gap-1">
           <span class="dot animate-blink"></span>
@@ -79,16 +79,16 @@
     @apply rounded-2xl px-5 backdrop-blur-md text-white/80;
     @apply transition-colors duration-200;
   }
-  textarea::placeholder {
-    @apply text-white/30 text-base;
-  }
   textarea {
-    @apply py-3;
-    @apply bg-white/5 hover:bg-white/[.07] resize-none focus:outline-none;
+    @apply pt-3 pb-4;
+    @apply text-base resize-none;
+    @apply bg-white/5 hover:bg-white/[.07] focus:outline-none;
+    @apply placeholder:text-white/30;
   }
   button {
     @apply h-12 flex items-center justify-center;
     @apply bg-black/30 hover:bg-black/40 active:bg-black/50;
+    @apply disabled:pointer-events-none;
   }
   button .dot {
     @apply h-1.5 w-1.5 rounded-full bg-white/80;
