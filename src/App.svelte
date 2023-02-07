@@ -49,8 +49,9 @@
     @apply content-[''] absolute opacity-10 blur-3xl -z-10;
   }
   .link-cohere {
-    @apply font-semibold italic underline decoration-wavy decoration-purple-500/90 hover:text-white;
-    @apply transition-colors duration-200;
+    @apply font-semibold italic text-white;
+    @apply hover:underline decoration-purple-500/80;
+    @apply transition-all duration-200;
   }
   .link-code {
     @apply flex items-center gap-2 mt-5 opacity-20 hover:opacity-30;
